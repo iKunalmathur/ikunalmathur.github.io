@@ -1,0 +1,135 @@
+//font import
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+html {
+    scroll-behavior: smooth;
+    --bg-primary: #fafafa;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans',
+        sans-serif;
+    background-color: var(--bg-primary);
+}
+
+.h-vh {
+    height: 100vh;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.container {
+    padding: 1.5em;
+}
+
+.text-barcode {
+    font-family: 'Libre Barcode 128 Text',
+        cursive;
+    font-weight: 500;
+    font-size: 3rem;
+    color: rgb(32, 32, 32);
+}
+
+nav {
+    h1 {
+        margin: 0;
+        color: #333;
+        text-align: center;
+    }
+}
+
+.project-card {
+    padding: 1.5em;
+    margin: 2em 0;
+    background-color: rgb(182, 182, 182);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .btn-visit {
+        border-radius: 5px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        padding: .5em;
+        transition: 0.3s;
+        background-color: #cccccc;
+        color: #1d1d1d;
+    }
+
+    .btn-visit:hover {
+        transition: 0.3s;
+        background-color: #dbdbdb;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 1em;
+
+    .btn-group {
+        display: flex;
+        gap: 2em;
+    }
+
+    .label-group {
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+@media only screen and (min-width : 768px) {
+
+    /* Styles */
+    nav {
+        .text-barcode {
+            font-size: 3rem;
+        }
+
+        h1 {
+            text-align: left;
+        }
+    }
+
+    .project-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+
+        .project-card {
+            .title {
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        row-gap: 1em;
+    }
+
+}
+
+@media only screen and (min-width : 1224px) {
+    .project-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

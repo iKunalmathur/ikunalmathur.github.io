@@ -1,5 +1,6 @@
 .text-barcode {
-  font-family: 'Libre Barcode 128 Text', cursive;
+  font-family: 'Libre Barcode 128 Text',
+ cursive;
   font-size: 2.5rem;
 }
 
