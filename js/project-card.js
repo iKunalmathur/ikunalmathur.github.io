@@ -42,7 +42,7 @@ const template = document.createElement('template');
     <div class="project-card">
         <div class="title"><slot name='title'></div>
         <div class="description"><slot name='description'></div>
-        <a href="" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+        <a href="" target="_blank" rel="noopener noreferrer" class="btn-visit">Take a look 🙂</a>
     </div>
     `;
 
