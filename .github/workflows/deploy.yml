@@ -28,6 +28,8 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build
+      env:
+        NEXT_PUBLIC_USERNAME: "ikunalmathur"
     - run: npm run export
     - run: touch ./out/.nojekyll
     
