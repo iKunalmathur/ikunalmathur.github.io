@@ -31,6 +31,8 @@ jobs:
       env:
         NEXT_PUBLIC_USERNAME: "ikunalmathur"
     - run: npm run export
+      env:
+        NEXT_PUBLIC_USERNAME: "ikunalmathur"
     - run: touch ./out/.nojekyll
     
     - name: Deploy 🚀
