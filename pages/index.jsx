@@ -1,8 +1,10 @@
+import Languages from "../components/Languages";
+import Repo from "../components/Repo";
 import { app } from "../config/app";
 
 export const getStaticProps = async () => {
   const res = await fetch(
-    `https://api.github.com/users/${app.username}/repos?`,
+    `https://api.github.com/users/${app.username}/repos`,
     {
       method: "GET",
       headers: {
@@ -10,55 +12,59 @@ export const getStaticProps = async () => {
       },
     }
   );
-  const philosophies = "";
-  const repos = await res.json();
+  const data = await res.json();
+  const languages = [...new Set(data.map((item) => item.language))];
+  const filteredRepos = data.filter((item) => {
+    if (item.description) {
+      return item;
+    }
+  });
+  function compare(x, y) {
+    if (x.stargazers_count > y.stargazers_count) {
+      return -1;
+    }
+    if (x.stargazers_count < y.stargazers_count) {
+      return 1;
+    }
+    return 0;
+  }
+  const sortedRepo = filteredRepos.sort(compare);
+  const repos = sortedRepo ?? [];
+  // console.log(sortedRepo);
+  // console.log("data : ", data.length);
+  // console.log("repo : ", repos.length);
+  // console.log(repos);
   return {
     props: {
-      philosophies,
       repos,
+      languages,
     },
   };
 };
 
-export default function Home({ philosophies, repos }) {
+export default function Home({ repos, languages }) {
   return (
-    <div className="max-w-7xl mx-auto p-4 flex flex-col justify-between min-h-screen">
+    <div className="max-w-5xl mx-auto p-4 flex flex-col justify-between min-h-screen">
       <header className="flex items-center justify-between py-8">
         <div>
           <h1 className="text-4xl font-bold">Github/{app.username}</h1>
-          <p>{philosophies}</p>
         </div>
         <nav>
-          <a href="">resume</a>
+          <a href=""></a>
         </nav>
       </header>
-      <main className="mt-[10vh] mb-auto">
-        <div className="grid grid-cols-12 gap-6">
-          {repos.map((repo, key) => {
-            return (
-              <div key={key} className="col-span-4">
-                <div className="bg-neutral-800 p-6 rounded-lg shadow-md">
-                  <div className="flex flex-col justify-between">
-                    <div>
-                      <a
-                        href={repo.html_url}
-                        className="font-semibold text-lg  hover:text-primary-500"
-                      >
-                        📕 {repo.name}
-                      </a>
-                      <p className="text-muted mt-1">{repo.description}</p>
-                    </div>
-                    <div className="flex text-muted font-semibold gap-4 mt-2">
-                      <p>⭐ {repo.stargazers_count} </p>
-                      <p>📦 {repo.size}kb </p>
-                      <p>⚒ {repo.language} </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+      <main className="mt-[10vh] mb-auto space-y-6">
+        <section>
+          <h1 className=" text-3xl font-semibold mb-4">Into -</h1>
+          <p className="text-muted">
+            Hey 👋 explorer {"i've"} built this project to test out my skill 🎯
+            over <u>javascript</u>. it includes ⚡ Rest API, ♻ Array
+            manipulation, etc.
+            <br />
+          </p>
+        </section>
+        <Languages languages={languages} />
+        <Repo repos={repos} />
       </main>
       <footer className="py-6">
         <div className="text-center text-muted font-semibold capitalize">
