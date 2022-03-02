@@ -16,12 +16,12 @@ export default function Languages({ languages }) {
 
   return (
     <section>
-      <h1 className=" text-3xl font-semibold mb-4">Languages -</h1>
-      <div className="grid grid-cols-12 gap-6">
+      <h1 className=" text-3xl font-semibold mb-8">Languages -</h1>
+      <div className="grid sm:grid-cols-12 gap-6">
         {languages.map((lang, key) => {
           if (lang) {
             return (
-              <div key={key} className="col-span-3">
+              <div key={key} className="sm:col-span-6 md:col-span-4">
                 <div className="bg-neutral-800 p-6 rounded-lg shadow-md">
                   <div className="flex gap-4 items-center">
                     <div>
