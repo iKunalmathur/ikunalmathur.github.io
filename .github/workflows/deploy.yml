@@ -6,9 +6,7 @@ name: Deploy App
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+    
 jobs:
   build:
 
@@ -30,9 +28,11 @@ jobs:
     - run: npm run build
       env:
         NEXT_PUBLIC_USERNAME: "ikunalmathur"
+        NEXT_PUBLIC_PORTFOLIO_URL: "https://www.kunalmathur.in/"
     - run: npm run export
       env:
         NEXT_PUBLIC_USERNAME: "ikunalmathur"
+        NEXT_PUBLIC_PORTFOLIO_URL: "https://www.kunalmathur.in/"
     - run: touch ./out/.nojekyll
     
     - name: Deploy 🚀
